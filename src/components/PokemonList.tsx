@@ -1,9 +1,7 @@
 import React from 'react'
-
-interface IPokemon {
-  name: string,
-  url: string
-}
+import { IPokemon } from '../types/interfaces'
+import PokemonItem from './PokemonItem'
+import './components.css'
 
 interface Props {
   pokeData: IPokemon[],
@@ -12,11 +10,11 @@ interface Props {
 const PokemonList: React.FC<Props> = ({ pokeData }) => {
 
   return (
-    <div>
+    <div className="PokemonList">
       {
-        pokeData?.map((pokemon: IPokemon) => {
+        pokeData?.map((pokemon: IPokemon, index: number) => {
           return (
-            <p>{pokemon.name}</p>
+            <PokemonItem pokemon={pokemon} key={index} />
           )
         })
       }
